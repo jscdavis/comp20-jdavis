@@ -1,0 +1,2 @@
+James Davis - Comp 20 Lab 5 README
+I couldn't figure out a way I consulted my friend Matt (a student at the University of Rochester) about css syntax. This lab took me about 3.5 hours, though most of it was spent researching the topic online.

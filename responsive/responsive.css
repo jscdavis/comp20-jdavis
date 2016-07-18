@@ -1,0 +1,46 @@
+/* define the images by using coordinates on the sprite sheet */
+
+.explained {width:128px; height:240px;
+background:software.png; 0 0px;}
+
+.project_leader {width:128px; height:240px;
+background:software.png; -128 0px;}
+
+.analyst {width:128px; height:240px;
+background:software.png; -256 0px;}
+
+.programmer {width:128px; height:240px;
+background:software.png; -384 0px;}
+
+.business_consultant {width:128px; height:240px;
+background:software.png; -512 0px;}
+
+.documented {width:128px; height:240px;
+background:software.png; 0 -240px;}
+
+.operations {width:128px; height:240px;
+background:software.png; -128 -240px;}
+
+.billed {width:128px; height:240px;
+background:software.png; -256 -240px;}
+
+.supported {width:128px; height:240px;
+background:software.png; -384 -240px;}
+
+.needed {width:128px; height:240px;
+background:software.png; -512 -240px;}
+
+/* the picture is chosen based on the max/min width of the browser */
+
+<picture>
+	<source srcset = ".explained" media= "(min-width: 1200px)">
+	<source srcset = ".project_leader" media= "(max-width: 1199px) and (min-width: 1100px)">
+	<source srcset = ".analyst" media= "(max-width: 1099px) and (min-width: 1000px)">
+	<source srcset = ".programmer" media= "(max-width: 999px) and (min-width: 900px)">
+	<source srcset = ".business_consultant" media= "(max-width: 899px) and (min-width: 800px)">
+	<source srcset = ".documented" media= "(max-width: 799px) and (min-width: 700px)">
+	<source srcset = ".operations" media= "(max-width: 699px) and (min-width: 600px)">
+	<source srcset = ".billed" media= "(max-width: 599px) and (min-width: 500px)">
+	<source srcset = ".supported" media= "(max-width: 499px) and (min-width: 400px)">
+	<source srcset = ".needed" media= "(max-width: 400px)">
+</picture>
