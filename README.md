@@ -1,2 +1,0 @@
-James Davis - Comp 20 Lab 5 README
-My files failed to run properly because I there was syntax relating to the sprites that I got wrong, but I think I was able to gain some insight into the general theory behind the lab. I consulted my friend Matt (a student at the University of Rochester) about css syntax. This lab took me about 3.5 hours, though most of it was spent researching the topic online.
