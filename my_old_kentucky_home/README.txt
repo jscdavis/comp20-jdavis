@@ -1,0 +1,2 @@
+James Davis - Lab 6
+All aspects of the lab have been implemented correctly and are functioning properly. My friend Matt (a student at the University of Rochester) helped me with some Javascript syntax I didn't fully understand. I spent about 7 hours on this lab.
