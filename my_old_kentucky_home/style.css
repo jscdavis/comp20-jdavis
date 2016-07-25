@@ -2,9 +2,7 @@ body {
 	text-align: center;
 	font-family: arial;
 }
-#Title {
-	text-align: center;
-	font-family: arial;
-	font-weight: 600;
-	font-size: 150%
+h1 {
+	font-weight: 1000;
+	font-size: 200%;
 }
