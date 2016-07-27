@@ -1,0 +1,2 @@
+James Davis - Lab 9
+Every aspect of the lab has been implemented and is working properly. I'm still experimenting with the best train google map icons to use, but the ones I have now are functional. I did not collaborate with anyone on this assignment but I did take some code from the gmap_api_example to get started with a working Google Maps API, but then I did my own edits from there. This lab took me about 6 hours.
