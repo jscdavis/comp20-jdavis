@@ -1,2 +1,0 @@
-James Davis - Lab 7
-All aspects of the lab have been implemented and are functioning properly. I asked my friend Matt (a student at the University of Rochester) about Javascript syntax, and he helped me realize that I was putting the index brackets in the wrong place. I spent about 1 hour on this lab. 
