@@ -1,4 +1,4 @@
 James Davis - Lab 9
-All aspects of the lab are working properly. I asked my friend Matt, a friend of mine who is a student at the University of Rochester, helped me with Javascript syntax, but other than that I didn't collaborate with anyone. I spent about 4.5 hours on this lab.
+All aspects of the lab are working properly. My friend Matt, a friend of mine who is a student at the University of Rochester, helped me with Javascript syntax, but other than that I didn't collaborate with anyone. I spent about 4.5 hours on this lab.
 
-When I tried to request data from both the local computer and from messagehub.herokuapp.com, but neither worked. This is because 
+I tried to request data from both the local computer and from messagehub.herokuapp.com, but neither worked. The local request didn't work becaue XMLHttpRequests are designed to only make requests to remote servers, and as local files aren't remote it didn't work. As for the request to herokuapp.com, the request didn't work because XMLHttpRequests are bound by the same origin policy, which means that the requests can only be made between documents with the same origin. In this case, the request failed because herokuapp is a different host to my Python server, meaning the origin is not the same.
