@@ -1,5 +1,5 @@
-function getSchedule () { //this function is invalid, I was just trying to visualize how to code the scheduling on a
-	//separate, cleaner file.
+function getSchedule () { //this function and whole .js file are invalid, I was just trying to visualize how to code the
+	//scheduling on a separate, cleaner file.
 
 	request.open("GET", "https://powerful-depths-66091.herokuapp.com/redline.json", true);
 
