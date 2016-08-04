@@ -1,5 +1,4 @@
-    function init()
-      {
+function init() {
         var iconBase = 'train_icon-v3.png'
 
         // Red Line Stations
@@ -248,4 +247,99 @@
           strokeWeight: 2
         });
         path3.setMap(map);
-      }
+
+//find my location
+
+var infoWindow = new google.maps.InfoWindow();
+
+if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+
+            var user_pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(user_pos);
+            map.panTo(user_pos);
+
+            var user_marker = new google.maps.Marker({
+            position: user_pos,
+            title: "Your Location"
+          });
+            user_marker.setMap(map);
+
+            google.maps.event.addListener(user_marker, 'click', function() {
+            infoWindow.setContent('Station: closestStation(user_pos), Distance: getDist(user_pos, closestStation(user_pos)) miles');
+            infoWindow.open(map, user_marker);
+
+            var stationRoute = [
+              user_pos,
+              closestStation(user_pos)
+            ];
+
+            var pathToStation = new google.maps.Polyline({
+            path: stationRoute,
+            geodesic: true,
+            strokeColor: '#0000FF', //supposed to be blue
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+        });
+        pathToStation.setMap(map);
+        });
+
+        });
+  }
+
+function closestStation(myPos) {
+
+  var shortestDist = 0;
+  var shortestIndex = 0;
+
+  var stations = [
+    alewife,
+    davis,
+    porterSquare,
+    harvardSquare,
+    centralSquare,
+    kendall_mit,
+    charles_mgh,
+    parkStreet,
+    downtownCrossing,
+    southStation,
+    broadway,
+    andrew,
+    jfk_umass,
+    northQuincy,
+    wollaston,
+    quincyCenter,
+    quincyAdams,
+    braintree,
+    savinHill,
+    fieldsCorner,
+    shawmut,
+    ashmont
+  ];
+  for (i = 0; i < stations.length; i++) {
+    if (getDist(myPos, stations(i)) > shortestDist) {
+      shortestIndex = i;
+    }
+  }
+  return stations(shortestIndex);
+}
+
+function getDist(pos1, pos2) {
+  var R = 6371e3; // meters
+    var w = pos1.lat.toRadians();
+    var x = pos2.lat.toRadians();
+    var y = (pos2.lat-pos1.lat).toRadians();
+    var z = (pos2.lng-pos2.lng).toRadians();
+
+    var a = Math.sin(y/2) * Math.sin(y/2) +
+            Math.cos(w) * Math.cos(x) *
+            Math.sin(z/2) * Math.sin(z/2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+    return R * c * 0.00062137; //convert to miles
+}
+}
