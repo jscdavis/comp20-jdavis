@@ -10,5 +10,4 @@ Part 2: James Davis - Lab 10
 I did not collaborate with anyone on this lab. I spent approximately 6 hours on this lab.
 
 Part 3: James Davis - Lab 12
-
 At this stage, my server is throwing an Application Error, and when I check the logs it states that one of my lines is not a function, but that doesn't seem to be the case. I'll continue working on it. I did not collaborate with anyone on this lab, though I did communicate with the TA John Gallagher extensively about this lab and lab 11. This lab has taken me about 6 hours, though additional time was spent on lab 11, which helped lay the foundation for this lab.
