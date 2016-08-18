@@ -1,0 +1,43 @@
+Introduction
+This assignment is about testing a web application to find security and privacy vulnerabilities. I found 3 vulnerabilities in the app: "Not Foursquare". In general, during my search I classified a vulnerability as any request the user can send to the server that either gives him or her access to data he or she should not have access to, a request that the user can send to the server that provides the user with functionality unintended by the app, or a user request that can disable or affect the functionality of the app.
+
+Methodology
+After hosting the server-vuln.js file on Heroku (URL: https://jdavis-lab-13.herokuapp.com), I started by "black box" testing the app, meaning that I sent the server requests without looking at the source code. I used curl to send the website requests from the command line. I found most of the flaws through this method.
+
+However, I also did some "white box" testing (looking at the source code) and I was able to confirm my black box findings.
+
+Abstract of Findings
+The issues I found with the server ranged from almost trivial data storage concerns to extremely critical cross site scripting flaws. XSS can be extremely harmful to a server and its users, and should be avoided at all costs. As seen by the steady decay of the vulnerableapp.herokuapp.com site, when any user can run whatever scripts they want, an entire server can be hijacked. Couple that with the fact that the server is not protected by the Same Origin Policy, this server could be a disaster waiting to happen.
+
+Issues Found
+
+1)
+- Issue: No protection against Cross Site Scripting
+- Location: POST & GET API
+- Severity: Very high
+- Description: When sending requests to /sendLocation, I can send Javascript code to be executed by the server. For example:
+curl -d "login=<script>alert('hello')</script>&lat=10&lng=10" https://jdavis-lab-13.herokuapp.com/sendLocation
+yeilds a pop up for users who visit the site, which could easily be exploited.
+- Proof: see vuln-proof-1.png
+- Resolution: The issue is that user input text is being executed by the server as code. One way to solve this is to put a check on user input and prevent non alphanumeric characters (like "<", ">", which are often tell-tale signs of code). In other words, filter the input before it is sent to the server.
+
+2)
+- Issue: Extra paramters can be sent to the server
+- Location: POST API
+- Severity: Mild
+- Description: When sending requests to the server, users can put additional paramters in their input which will be stored and read by the server, which wastes time and space. Because of the relatively small amount of data being sent, this isn't a major issue but it still makes the server less efficient. Example:
+curl -d "login=jameswithspam&lat=20&lng=20&parameter=0&anotherparameter=0" https://jdavis-lab-13.herokuapp.com/sendLocation
+- Proof: see vuln-proof-2.png
+- Resolution: The issue can be resolved by passing into the function an object with only the desired parameters. E.g:
+var login_and_location that is comprised of only the login, lat and lng feilds.
+
+3)
+- Issue: Cross origin resource sharing violates the same origin policy
+- Location: Lines 17 & 18 of server-vuln.js
+- Severity: Potentially high
+- Description: In the source code, lines 17 & 18 of server-vuln.js enable CORS (Cross Origin Resource Sharing). Though this has some practical functions, it can also be potentially dangerous for the server, as it violates the Same Origin Policy. This means that there may be ways to run scripts from third party sites (especially because I've already shown XSS occurs on this server) on this server, which means that a malicious site could have access to important data like a user's client's cookies.
+- Proof: see vuln-proof-3.png
+- Resolution: Remove lines 17 and 18 from server-vuln.js
+
+Conclusion
+The flaws in the "Not Foursquare" server can potentially ruin the entire server. However, the site itself runs fine without too much user tampering, so with some changes to prevent the highlighted issues, the server would be able to run much smoother. This assignment was a good demonstration of the importance of server security, especially when it comes to cross site scripting.
